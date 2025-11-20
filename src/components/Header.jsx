@@ -1,8 +1,32 @@
 import { Link } from 'react-router-dom';
 
 function Header() {
+
+  const headerStyle = {
+    width: '100vw',
+    // display: 'flex',
+    // justifyContent: 'space-between',
+    // alignItems: 'center',
+    padding: '1rem 0',
+    borderBottom: '1px solid black',
+    backgroundColor: 'grey'
+  };
+  
+  const containerStyle = {
+    width: '75%',
+    margin: '0 auto',
+    // marginTop: '200px',
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    padding: '1rem 0',
+    backgroundColor: 'grey',
+
+  }
+
   const navStyle = {
     display: 'flex',
+    width: '60%',
     gap: '1rem',
     padding: '1rem',
     borderBottom: '1px solid #ddd',
@@ -20,13 +44,15 @@ function Header() {
     fontSize: '1rem',
   };
   return (
-    <header>
-      <h1>Guitar Academy</h1>
-      <nav style={navStyle}>
-        <Link to="/" style={linkStyle}>Home</Link>
-        <Link to="/courses" style={linkStyle}>Courses</Link>
-        <Link to="/lesson/1" style={linkStyle}>Lesson Viewer</Link>
-      </nav>
+    <header style={headerStyle}>
+      <div style={containerStyle}>
+        <h1>Guitar Academy</h1>
+        <nav style={navStyle}>
+          <Link to="/" style={linkStyle}>Home</Link>
+          <Link to="/courses" style={linkStyle}>Courses</Link>
+          <Link to="/lesson/1" style={linkStyle}>Lesson Viewer</Link>
+        </nav>
+      </div>
     </header>
   );
 }
