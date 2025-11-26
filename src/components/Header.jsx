@@ -9,9 +9,9 @@ function Header() {
     // alignItems: 'center',
     padding: '1rem 0',
     borderBottom: '1px solid black',
-    backgroundColor: 'grey'
+    backgroundColor: 'rgba(191, 200, 191, 1)'
   };
-  
+
   const containerStyle = {
     width: '75%',
     margin: '0 auto',
@@ -20,8 +20,7 @@ function Header() {
     justifyContent: 'space-between',
     alignItems: 'center',
     padding: '1rem 0',
-    backgroundColor: 'grey',
-
+    backgroundColor: 'rgba(191, 200, 191, 1)'
   }
 
   const navStyle = {
