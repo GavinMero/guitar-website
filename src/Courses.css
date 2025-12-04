@@ -1,76 +1,91 @@
-/* Container */
-.courses-container {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 24px;
-  font-family: Arial, sans-serif;
-}
-
-/* Header */
-.courses-header h1 {
-  font-size: 36px;
-  margin-bottom: 8px;
-}
-
-.courses-header p {
-  color: #555;
-  margin-bottom: 24px;
-}
-
-/* GRID */
+/* Container grid */
 .courses-grid {
   display: grid;
-
-  /* 2x2 Grid */
-  grid-template-columns: repeat(2, 1fr);
-
-  /* spacing between items */
+  grid-template-columns: repeat(3, minmax(250px, 1fr)); /* 3 per row on desktop */
   gap: 20px;
+  padding: 100px;
 }
 
-/* Image Card */
+/* Individual course card */
 .course-card {
   position: relative;
-  overflow: hidden;
-  border-radius: 12px;
-  text-decoration: none;
   display: block;
-  cursor: pointer;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  transition: transform 0.2s, box-shadow 0.2s;
+  text-decoration: none;
+  color: inherit;
 }
 
+.course-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+/* Course image */
 .course-card img {
   width: 100%;
-  height: 250px;
+  height: 100%;
   object-fit: cover;
-  transition: transform 0.3s ease;
+  display: block;
+  transition: transform 0.2s, filter 0.2s;
 }
 
-/* Zoom on hover */
 .course-card:hover img {
-  transform: scale(1.08);
+  transform: scale(1.05);
+  filter: brightness(80%); /* darken slightly on hover */
 }
 
-/* Overlay */
-.course-overlay {
+/* Label overlay - always visible at bottom */
+.course-label {
   position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.4);
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.course-overlay span {
-  color: white;
-  font-size: 22px;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 10px;
+  background: rgba(0,0,0,0.4);  /* always slightly visible */
+  color: #fff;
+  font-size: 1.2rem;
   font-weight: bold;
+  text-align: center;
+  box-sizing: border-box;
+  transition: all 0.3s ease;
+  pointer-events: none;
 }
 
-.course-card:hover .course-overlay {
-  opacity: 1;
+/* On hover, move label to center and make more visible */
+.course-card:hover .course-label {
+  bottom: 50%;
+  transform: translateY(50%);
+  background: rgba(0,0,0,0.7);
+  font-size: 1.3rem;
+  padding: 12px 20px;
+}
+
+/* Tablet: 2 columns */
+@media (max-width: 900px) and (min-width: 601px) {
+  .courses-grid {
+    grid-template-columns: repeat(2, 1fr);
+    padding: 50px;
+  }
+}
+
+/* Mobile: 1 column */
+@media (max-width: 600px) {
+  .courses-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+   
+  }
+
+  .course-label {
+    font-size: 1rem;
+    padding: 8px;
+  }
+
+  .course-card:hover .course-label {
+    font-size: 1.1rem;
+    padding: 10px 15px;
+  }
 }

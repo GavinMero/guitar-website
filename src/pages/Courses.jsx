@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "../Courses.css"; // <-- import the CSS file
+import "../Courses.css";
 
 function Courses() {
   const courses = [
@@ -15,37 +15,35 @@ function Courses() {
       image: "https://picsum.photos/600/400?random=2",
     },
     {
-      title: "Fingerstyle",
-      path: "/courses/fingerstyle",
+      title: "Advanced Guitar",
+      path: "/courses/advanced",
       image: "https://picsum.photos/600/400?random=3",
     },
     {
-      title: "Music Theory",
-      path: "/courses/theory",
+      title: "Jazz Guitar",
+      path: "/courses/jazz",
       image: "https://picsum.photos/600/400?random=4",
     },
+    {
+      title: "Blues Guitar",
+      path: "/courses/blues",
+      image: "https://picsum.photos/600/400?random=5",
+    },
+    {
+      title: "Solo Techniques",
+      path: "/courses/solo",
+      image: "https://picsum.photos/600/400?random=6",
+    }
   ];
 
   return (
-    <div className="courses-container">
-      <div className="courses-header">
-        <h1>Courses</h1>
-        <p>Here is where we'll list our lessons.</p>
-      </div>
-
-      {/* GRID STARTS HERE */}
-      <div className="courses-grid">
-        {courses.map((course) => (
-          <Link key={course.path} to={course.path} className="course-card">
-            <img src={course.image} alt={course.title} />
-
-            <div className="course-overlay">
-              <span>{course.title}</span>
-            </div>
-          </Link>
-        ))}
-      </div>
-      {/* GRID ENDS HERE */}
+    <div className="courses-grid">
+      {courses.map((course, index) => (
+        <Link key={index} to={course.path} className="course-card">
+          <img src={course.image} alt={course.title} />
+          <div className="course-label">{course.title}</div>
+        </Link>
+      ))}
     </div>
   );
 }
