@@ -12,9 +12,14 @@ function App() {
 
       <main style={{ padding: '1rem' }}>
         <Routes>
+          {/* Home page */}
           <Route path="/" element={<Home />} />
+
+          {/* Courses grid */}
           <Route path="/courses" element={<Courses />} />
-          <Route path="/lesson/:id" element={<LessonViewer />} />
+
+          {/* Dynamic lesson viewer for each course */}
+          <Route path="/courses/:courseId" element={<LessonViewer />} />
         </Routes>
       </main>
     </div>
